@@ -1,0 +1,5 @@
+.screen-container{
+   max-height: 100vh;
+   font-size: 1.1rem !important;
+   overflow: auto;
+}

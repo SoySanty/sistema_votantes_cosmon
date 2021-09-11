@@ -5,20 +5,19 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root{
-    --dark1: #262626;
-    --dark2: #3f3f3f;
-    --dark-t: rgba(38, 38, 38, 0.631);
-    --dark-t2: rgba(38, 38, 38, 0.376);
-    --light1: #fff;
-    --light2: #EAEAEA;
-    --light-t: rgba(255,255,255,.4);
-    --green1: #20818C;
-    --green2: #71b878;
-    --red1: #d84557;
-    --blue1: #2285d4;
+
+    --color1: #262626;
+    --color2: #4F8C58;
+    --color2-d: #396d62;
+    --color3: #f73628;
+    --color4: #F29F05;
+    --color5: #e6e6e6;
+    --color6: #3a3a3a;
+    --color5-t: rgba(230, 230, 230, 0.7);
 }
 
 body {

@@ -1,6 +1,8 @@
-import './components/styles/App.css';
+import './components/styles/App.css'
 import Login from './components/screens/Login'
-import Home from './components/screens/Home';
+import Home from './components/screens/Home'
+import VotingBooth from './components/screens/VotingBooth'
+import { GlobalContext } from './components/scripts/GlobalContext'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,20 +11,25 @@ import {
 
 function App() {
   return (
-    <Router>
-      <Switch>
+    <GlobalContext>
+      <Router>
+        <Switch>
 
-        <Route path="/" exact>
-          <Home />
-        </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
 
-        <Route path="/login" exact>
-          <Login />
-        </Route>
+          <Route path="/votar" exact>
+            <VotingBooth />
+          </Route>
 
-      </Switch>
-    </Router>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
 
+        </Switch>
+      </Router>
+    </GlobalContext>
   );
 }
 

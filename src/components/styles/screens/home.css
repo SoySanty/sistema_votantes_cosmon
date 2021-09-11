@@ -1,3 +1,133 @@
 .home-container{
-   min-height: 100vh;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-auto-rows: calc(100vh - 4rem);
+   background: var(--color2);
+   background-image: linear-gradient(-80deg, var(--color2-d), var(--color2));
+}
+
+.home-container .screen-box{
+   position: absolute;
+   max-height: calc(100vh - 4rem);
+   height: calc(100vh - 4rem);
+   bottom: 0;
+   right: 0;
+   overflow: hidden;
+   z-index: 0;
+}
+
+.home-container .screen-box .security-text{
+   position: absolute;
+   color: var(--color5);
+   top: 4rem;
+   right: 2rem;
+   width: 80%;
+   text-align: right;
+   font-family: serif;
+}
+
+.home-container .screen-box svg{
+   min-width: 100%;
+   min-height: 100%;
+   width: 100%;
+   height: 100%;
+}
+
+.home-container .content-box{
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   padding: 1rem 2rem;
+   overflow-y: auto;
+}
+
+.home-container .content-box::-webkit-scrollbar{
+   display: none;
+}
+
+.home-container .content-box h1{
+   color: var(--color5);
+}
+
+.home-container .content-box p{
+   color: var(--color5-t);
+}
+
+/*
+====================================Media Screen
+*/
+@media screen and (max-width: 59rem){
+   .home-container{
+      grid-template-columns: 1fr;
+   }
+
+   .home-container .screen-box{
+      position: fixed;
+      width: 60%;
+      height: auto;
+      bottom: -.5rem;
+      right: 0;
+   }
+
+   .home-container .screen-box .security-text{
+      display: none;
+   }
+}
+
+@media screen and (max-width: 43rem){
+   .home-container .screen-box{
+      width: 70%;
+   }
+
+   .home-container .screen-box svg{
+      opacity: .7;
+   }
+
+   .home-container .content-box{
+      padding: 1rem;
+      gap: 1rem;
+   }
+
+   .home-container .content-box .title-box h1{
+      font-size: 1.7rem;
+   }
+}
+
+
+
+
+/*
+==========================================SVG
+*/
+
+#mano1{
+   animation: 2s manoizquierda infinite alternate;
+   transform-origin: bottom;
+}
+
+#mano2{
+   animation: 1s manoizquierda infinite alternate linear;
+   transform-origin: bottom;
+}
+
+#mano3{
+   animation: 2s manoderecha infinite alternate linear;
+   transform-origin: bottom;
+}
+
+#mano4{
+   animation: 2s manoderecha infinite alternate;
+   transform-origin: bottom;
+}
+
+@keyframes manoizquierda {
+   to{
+      transform: rotate(10deg)
+   }
+}
+
+@keyframes manoderecha {
+   to{
+      transform: rotate(-10deg)
+   }
 }

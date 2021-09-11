@@ -4,15 +4,27 @@ import {ReactComponent as LogoSvg} from '../img/logo.svg'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-   faBars,
+	faBars,
+   faVoteYea,
+   faChevronLeft
 } from '@fortawesome/free-solid-svg-icons'
 
-const Menu = () => {
+const Menu = props => {
+
+	const { target = "home", btnFn = ()=>{} } = props
+
+   const menuBar = {
+       home: <>
+			<LogoSvg />
+			<p>COSMON</p>
+		 </>,
+       voting: <><FontAwesomeIcon icon={faChevronLeft} className="icon" /><p>VOLVER</p></>
+   }
+   
    return (
       <header className="menu-container"> 
          <Link to="/" className="logo-container">
-            <LogoSvg />
-            <p>COSMON</p>
+            { menuBar[target] }
          </Link>
          
          <nav className="menu-content">
@@ -22,10 +34,17 @@ const Menu = () => {
             </label>
             <input type="checkbox" id="menuBars" />
 
-            <ul className="menu-list">
-               <li>Opcion1</li>
-               <li>Opcion2</li>
-            </ul>
+            {
+					target === "voting" ?
+					<div 
+					className="btn-vote"
+					onClick={btnFn}
+					>
+						<FontAwesomeIcon icon={faVoteYea} className="icon" />
+						VOTAR
+					</div>
+					: <p className="user-name">Lorenzo Santiago Saul Arias Villegas</p>
+				}
 
          </nav>
       </header>
