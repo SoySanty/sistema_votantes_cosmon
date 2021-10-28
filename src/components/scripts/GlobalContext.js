@@ -14,10 +14,15 @@ export const GlobalContext = ({ children }) => {
     refershEventList();
   }, []);
 
+  //==========Manejador de candidatos
+  const [vote, setVote] = useState(null);
+
   //Lista de datos a exportar
   const dataExport = {
     eventList,
     refershEventList,
+    vote,
+    setVote,
   };
 
   return (

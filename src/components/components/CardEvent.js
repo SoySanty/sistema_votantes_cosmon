@@ -4,17 +4,65 @@ import { DataExport } from "../scripts/GlobalContext";
 import { sortDates } from "../scripts/Moment";
 import Counter from "./Counter";
 import "../styles/components/cardEvent.css";
+import Results from "../screens/Results";
 
-const CardEvent = () => {
+const CardEvent = (props) => {
+  const { setCategory } = props;
   const { eventList } = useContext(DataExport);
   const [eventProcessed, setEventProcessed] = useState([]);
+  const [resultScreen, setResultScreen] = useState({});
 
+  useEffect(() => {
+    setResultScreen(null);
+  }, []);
   useEffect(() => {
     eventList && setEventProcessed(sortDates(eventList));
   }, [eventList]);
 
   return (
     <div className="card-event">
+      {eventProcessed.present ? (
+        eventProcessed.present.map((e, index) => (
+          <div className="card-item" key={index}>
+            <div className="info-item">
+              <p className="info-title">{e.evento}</p>
+              <p>
+                Categoría: <span className="info-subtitle">{e.categoria}</span>
+              </p>
+              <Link
+                to={`/votar`}
+                onClick={() => {
+                  setCategory(e);
+                }}
+              >
+                <button className="info-button">Entrar a la votar</button>
+              </Link>
+            </div>
+          </div>
+        ))
+      ) : (
+        <></>
+      )}
+      {eventProcessed.past ? (
+        eventProcessed.past.map((e, index) => (
+          <div className="card-item" key={index}>
+            <div className="info-item">
+              <p className="info-title">{e.evento}</p>
+              <p>
+                Categoría: <span className="info-subtitle">{e.categoria}</span>
+              </p>
+              <button
+                className="info-button res-btn"
+                onClick={() => setResultScreen(e)}
+              >
+                Ver resultados
+              </button>
+            </div>
+          </div>
+        ))
+      ) : (
+        <></>
+      )}
       {eventProcessed.future ? (
         eventProcessed.future.map((e, index) => (
           <div className="card-item" key={index}>
@@ -33,68 +81,12 @@ const CardEvent = () => {
       ) : (
         <></>
       )}
-      {eventProcessed.present ? (
-        eventProcessed.present.map((e, index) => (
-          <div className="card-item" key={index}>
-            <div className="info-item">
-              <p className="info-title">{e.evento}</p>
-              <p>
-                Categoría: <span className="info-subtitle">{e.categoria}</span>
-              </p>
-              <Link to="/votar">
-                <button className="info-button">Entrar a la votar</button>
-              </Link>
-            </div>
-          </div>
-        ))
-      ) : (
-        <></>
+      {resultScreen && (
+        <Results
+          cancel={() => setResultScreen(null)}
+          target={resultScreen.nro}
+        />
       )}
-      {eventProcessed.past ? (
-        eventProcessed.past.map((e, index) => (
-          <div className="card-item" key={index}>
-            <div className="info-item">
-              <p className="info-title">{e.evento}</p>
-              <p>
-                Categoría: <span className="info-subtitle">{e.categoria}</span>
-              </p>
-              <Link to="/votar">
-                <button className="info-button res-btn">Ver resultados</button>
-              </Link>
-            </div>
-          </div>
-        ))
-      ) : (
-        <></>
-      )}
-
-      {/* <div className="card-item">
-            <div className="info-item">
-               <p className="info-title">Elecciones generales 2021</p>
-               <p>Categoría:<span className="info-subtitle"> Presindencia</span></p>
-               <Link to="/votar">
-                  <button className="info-button">Entrar a la votar</button>
-               </Link>
-            </div>
-         </div>
-
-         <div className="card-item">
-            <div className="info-item">
-               <p className="info-title">Elecciones generales 2021</p>
-               <p>Categoría:<span className="info-subtitle"> Presindencia</span></p>
-               <Link to="/votar">
-                  <button className="info-button res-btn">Ver resultados</button>
-               </Link>
-            </div>
-         </div>
-
-         <div className="card-item">
-            <div className="info-item">
-               <p className="info-title">Elecciones generales 2021</p>
-               <p>Categoría:<span className="info-subtitle"> Secretaría</span></p>
-               <p>Disponible en: <br /><span className="info-subtitle">00:13:24:12</span></p>
-            </div>
-         </div> */}
     </div>
   );
 };

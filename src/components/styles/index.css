@@ -14,10 +14,11 @@
     --color2: #4F8C58;
     --color2-d: #396d62;
     --color3: #f73628;
-    --color4: #F29F05;
+    --color4: #d7a852;
     --color5: #e6e6e6;
-    --color6: #3a3a3a;
     --color5-t: rgba(230, 230, 230, 0.7);
+    --color6: #3a3a3a;
+    --color6-t: rgba(0, 0, 0, 0.5);
 }
 
 body {

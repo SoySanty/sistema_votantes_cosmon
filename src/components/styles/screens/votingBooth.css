@@ -3,14 +3,20 @@
    background: var(--color2);
    background-image: linear-gradient(90deg, var(--color2), var(--color2-d));
    min-height: calc(100vh - 4rem);
+   user-select: none;
 }
 
 .card-container .title-voting-booth{
    padding: 0 1rem;
    text-align: center;
-   margin-bottom: 1rem;
    color: var(--color5);
    border-radius: 1rem;
+}
+
+.card-container .subtitle-voting-booth{
+   text-align: center;
+   margin-bottom: 1rem;
+   color: var(--color4);
 }
 
 .card-container .card-list{

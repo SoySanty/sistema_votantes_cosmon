@@ -1,0 +1,98 @@
+.result-screen{
+   position: fixed;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 1rem;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: var(--color6-t);
+}
+.result-content{
+   background: var(--color5);
+   border-radius: .5rem;
+   animation: .3s openPopUp;
+   background: var(--color6);
+   overflow: hidden;
+}
+.result-content h3{
+   font-size: 1rem;
+   margin-bottom: 1rem;
+   padding: 1rem;
+   color: var(--color4);
+   background: var(--color1);
+}
+.result-content p{
+   margin: 0 1rem;
+}
+.result-content p b{
+   color: var(--color5) !important;
+}
+.result-content .result-table{
+   border-spacing: 0;
+   background: var(--color5);
+   margin: 1rem;
+}
+.result-content .result-table thead{
+   background: var(--color1);
+   color: var(--color5);
+}
+.result-content .result-table thead td:nth-child(3){
+   text-align: center;
+   width: fit-content;
+}
+.result-content .result-table td:nth-child(2){
+   text-align: center;
+}
+.result-content .result-table tr:nth-child(2n){
+   background: rgba(0,0,0,.1);
+}
+.result-content .result-table tr td{
+  padding: .3rem 1rem;
+}
+.result-content .buttons-container{
+   display: flex;
+   gap: 1rem;
+   justify-content: center;
+   margin-bottom: 1rem;
+}
+.result-content button{
+   transition: .2s;
+   cursor: pointer;
+   padding: .5rem 1rem;
+   border-radius: .5rem;
+   min-width: 7rem;
+   outline: none;
+   border: none;
+}
+.result-content button:hover{
+   transform: scale(1.035);
+}
+.result-content .btn-cancel{
+   color: var(--color5);
+   background: var(--color2);
+}
+.result-content .btn-print{
+   color: var(--color1);
+   background: var(--color4);
+}
+
+/*
+-------------Animations
+*/
+@keyframes openPopUp{
+   0%{
+      transform: scale(1.1)
+   }
+   50%{
+      transform: scale(.95)
+   }
+   75%{
+      transform: scale(1.07)
+   }
+   100%{
+      transform: scale(1);
+   }
+}

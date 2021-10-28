@@ -14,6 +14,7 @@ const toDate = (e) => {
   return date;
 };
 
+//Ordenar los eventos
 const sortDates = (e) => {
   const TODAY = getDate();
   const RES = { future: [], present: [], past: [] };
@@ -31,6 +32,7 @@ const sortDates = (e) => {
       }
     }
   }
+
   return RES;
 };
 
